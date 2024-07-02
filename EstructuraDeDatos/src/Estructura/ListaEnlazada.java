@@ -15,6 +15,7 @@ class ListaEnlazada implements Lista {
             actual = actual.siguiente;
         }
         actual.siguiente = nuevoNodo;
+        nuevoNodo.anterior = actual;
         return true;
     }
 
@@ -25,6 +26,9 @@ class ListaEnlazada implements Lista {
         }
         if (cabeza.valor == valor) {
             cabeza = cabeza.siguiente;
+            if (cabeza != null) {
+                cabeza.anterior = null;
+            }
             return true;
         }
         NodoEnlazado actual = cabeza;
@@ -33,6 +37,9 @@ class ListaEnlazada implements Lista {
         }
         if (actual.siguiente != null) {
             actual.siguiente = actual.siguiente.siguiente;
+            if (actual.siguiente != null) {
+                actual.siguiente.anterior = actual;
+            }
             return true;
         }
         return false;
@@ -49,17 +56,22 @@ class ListaEnlazada implements Lista {
         return tamaño;
     }
 
-    public int avanzarNodo() {
-
-        return 0;
+    public boolean avanzarNodo() {
+        if (cabeza == null || cabeza.siguiente == null) {
+            return false; // No se puede avanzar si no hay nodos o solo hay uno
+        }
+        cabeza = cabeza.siguiente;
+        return true;
     }
 
     private class NodoEnlazado {
         int valor;
+        NodoEnlazado anterior;
         NodoEnlazado siguiente;
 
         NodoEnlazado(int valor) {
             this.valor = valor;
+            this.anterior = null;
             this.siguiente = null;
         }
     }

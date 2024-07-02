@@ -6,4 +6,6 @@ public interface INodo {
     void postOrden();
 
     void presentarNegro();
+
+    void actualizarAltura();
 }

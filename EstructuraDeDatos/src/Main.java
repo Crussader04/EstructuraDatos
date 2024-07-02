@@ -1,42 +1,48 @@
-import Estructura.Arbol;
-import Estructura.NodoConcreto;
-import Estructura.Estructura;
+import Estructura.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        ArbolConcreto arbol = new ArbolConcreto();
-        arbol.agregar(5);
-        arbol.agregar(3);
-        arbol.agregar(7);
-        arbol.agregar(2);
-        arbol.agregar(4);
-        arbol.agregar(6);
-        arbol.agregar(8);
+        // Ejemplo de uso de diferentes estructuras
 
-        System.out.print("Preorden: ");
-        arbol.preOrden();
+        // Ejemplo de Árbol AVL
+        Avl avl = new Avl();
+        avl.agregar(5);
+        avl.agregar(3);
+        avl.agregar(7);
+        avl.agregar(2);
+        avl.agregar(4);
+        avl.agregar(6);
+        avl.agregar(8);
+
+        System.out.println("Recorrido preOrden AVL:");
+        avl.preOrden();
         System.out.println();
 
-        System.out.print("Inorden: ");
-        arbol.inOrden();
+        System.out.println("Recorrido inOrden AVL:");
+        avl.inOrden();
         System.out.println();
 
-        System.out.print("Postorden: ");
-        arbol.postOrden();
+        System.out.println("Recorrido postOrden AVL:");
+        avl.postOrden();
         System.out.println();
-    }
-}
 
-class ArbolConcreto extends Arbol {
-    @Override
-    public boolean agregar(int valor) {
-        if (raiz == null) {
-            raiz = new NodoConcreto(valor);
-            return true;
-        } else {
-            return raiz.agregar(valor);
-        }
+        // Ejemplo de Lista Circular
+        ListaCircular listaCircular = new ListaCircular();
+        listaCircular.agregar(1);
+        listaCircular.agregar(2);
+        listaCircular.agregar(3);
+
+        System.out.println("Primer nodo en lista circular: " + listaCircular.irPrimerNodo());
+        System.out.println("Último nodo en lista circular: " + listaCircular.irUltimoNodo());
+
+        // Ejemplo de Lista Doble Circular
+        DobleCircular dobleCircular = new DobleCircular();
+        dobleCircular.agregar(10);
+        dobleCircular.agregar(20);
+        dobleCircular.agregar(30);
+
+        System.out.println("Primer nodo en lista doble circular: " + dobleCircular.irPrimerNodo());
+        System.out.println("Último nodo en lista doble circular: " + dobleCircular.irUltimoNodo());
+        System.out.println("Retroceder nodo en lista doble circular: " + dobleCircular.retrocederNodo());
     }
 }

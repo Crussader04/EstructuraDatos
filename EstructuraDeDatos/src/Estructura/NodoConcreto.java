@@ -1,6 +1,10 @@
 package Estructura;
 
 public class NodoConcreto extends Nodo {
+
+    public Nodo izquierdo;
+    public Nodo derecho;
+
     public NodoConcreto(int valor) {
         super(valor);
     }
@@ -21,9 +25,15 @@ public class NodoConcreto extends Nodo {
                 result = this.derecha.agregar(valor);
             }
         } else {
-            result = false;
+            result = false; // No se permiten valores duplicados
         }
         return result;
     }
+
+    @Override
+    public void presentarNegro() {
+        // No hace nada específico en NodoConcreto, ya que no maneja colores
+    }
 }
+
 

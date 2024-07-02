@@ -1,8 +1,8 @@
 package Estructura;
 
 class DobleEnlazada extends ListaEnlazada {
-    private NodoDobleEnlazado cabeza;
-    private NodoDobleEnlazado cola;
+    protected NodoDobleEnlazado cabeza;
+    protected NodoDobleEnlazado cola;
 
     @Override
     public boolean agregar(int valor) {
@@ -19,10 +19,14 @@ class DobleEnlazada extends ListaEnlazada {
     }
 
     public int retrocederNodo() {
-        return 0;
+        if (cola == null || cola.anterior == null) {
+            return -1; // No hay nodo anterior para retroceder
+        }
+        cola = cola.anterior;
+        return cola.valor;
     }
 
-    private class NodoDobleEnlazado {
+    protected class NodoDobleEnlazado {
         int valor;
         NodoDobleEnlazado siguiente;
         NodoDobleEnlazado anterior;
@@ -34,4 +38,6 @@ class DobleEnlazada extends ListaEnlazada {
         }
     }
 }
+
+
 

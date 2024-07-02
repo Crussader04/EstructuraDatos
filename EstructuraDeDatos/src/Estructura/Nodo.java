@@ -1,6 +1,6 @@
 package Estructura;
 
-public class Nodo implements INodo
+public abstract class Nodo extends Estructura.NodoConcreto implements INodo
 {
     int valor;
     Nodo izquierda;
@@ -20,14 +20,22 @@ public class Nodo implements INodo
     public boolean agregar(int valor) {
         if(valor < this.valor) {
             if(this.izquierda == null) {
-                this.izquierda = new Nodo(valor);
+                this.izquierda = new Nodo(valor) {
+                    @Override
+                    public void presentarNegro() {
+                    }
+                };
                 return true;
             } else {
                 this.izquierda.agregar(valor);
             }
         } else {
             if(this.derecha == null) {
-                this.derecha = new Nodo(valor);
+                this.derecha = new Nodo(valor) {
+                    @Override
+                    public void presentarNegro() {
+                    }
+                };
                 return true;
             } else {
                 this.derecha.agregar(valor);
@@ -67,5 +75,15 @@ public class Nodo implements INodo
             derecha.postOrden();
         }
         System.out.print(valor + " ");
+    }
+
+    @Override
+    public void presentarNegro() {
+
+    }
+
+    @Override
+    public void actualizarAltura() {
+
     }
 }

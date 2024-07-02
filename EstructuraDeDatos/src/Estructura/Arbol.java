@@ -1,7 +1,9 @@
 package Estructura;
 
+import Estructura.NodoConcreto;
+
 public abstract class Arbol implements Estructura {
-    protected Nodo raiz;
+    protected NodoConcreto raiz;
 
     public void inOrden() {
         if (raiz != null) {
